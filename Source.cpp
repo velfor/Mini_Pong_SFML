@@ -1,14 +1,17 @@
 #include <SFML/Graphics.hpp>
+#include "const.h"
 #include "paddle.h"
+#include "ball.h"
 
 int main()
 {
-    const int windowWidth = 800;
-    const int windowHeight = 600;
+    
     sf::RenderWindow window(
         sf::VideoMode(windowWidth, windowHeight),
         "Mini Pong");
     Paddle paddle(windowWidth/2, windowHeight - 20);
+
+    Ball ball(windowWidth / 2, windowHeight / 2);
 
     while (window.isOpen())
     {
@@ -31,9 +34,11 @@ int main()
         }
         //Update игровых объектов
         paddle.update();
+        ball.update(paddle);
         //Отрисовка
         window.clear();
         window.draw(paddle.getShape());
+        window.draw(ball.getShape());
         window.display();
     }
 

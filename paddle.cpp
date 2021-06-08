@@ -1,4 +1,5 @@
 #include "paddle.h"
+#include "const.h"
 
 Paddle::Paddle(float startX, float startY) {
 	position.x = startX;
@@ -19,5 +20,9 @@ void Paddle::moveRight() {
 	position.x += paddleSpeed;
 }
 void Paddle::update() {
+	if (position.x < 0) position.x = 0;
+	else
+		if (position.x > windowWidth - 50)
+			position.x = windowWidth - 50;
 	paddleShape.setPosition(position);
 }
