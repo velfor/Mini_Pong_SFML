@@ -16,5 +16,5 @@ public:
 	RectangleShape getShape();
 	void reboundSides();//отражение от левой и правой стены
 	void reboundTopDown();
-	void update(Paddle&);
+	void update(Paddle&, int&, int&);
 };
